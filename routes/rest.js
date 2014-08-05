@@ -17,8 +17,8 @@ router.route('/ball')
     })
     .post(function(req, res) {
 
-    res.json({ message: 'REST. Ball was posted successfully'});
-});
+        res.json({ message: 'REST. Ball was posted successfully'});
+    });
 
 
 module.exports = router;
