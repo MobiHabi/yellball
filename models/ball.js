@@ -54,6 +54,9 @@ var Ball = model("Ball")
             tags: ['transit']
         })
     ;
+
+module.exports = Ball;
+
 //
 //var u1 = User.create();
 ////getters are generated automatically

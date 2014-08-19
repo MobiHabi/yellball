@@ -1,4 +1,5 @@
 var express = require('express');
+var expressSession = require('express-session');
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
@@ -20,8 +21,24 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(expressSession({ secret: 'my secret here' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// auth filter
+app.all('*', function(req, res, next) {
+    var sess = req.session
+    if (sess.views) {
+        sess.views++;
+        console.log('views',sess.views);
+    } else {
+        sess.views = 1
+        console.log('welcome to the session demo. refresh!');
+    }
+    console.log('sessionId', sess.id);
+    next();
+})
+
+// url mapping
 app.use('/', routes);
 app.use('/rest', rest);
 app.use('/users', users);
