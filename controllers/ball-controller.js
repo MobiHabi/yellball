@@ -3,6 +3,7 @@
  */
 
 var Ball = require('../models/ball');
+var service = require('../services/ball-service');
 var commonUtil = require('../utils/common-util');
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
         var balls = [];
         balls.push(createOne('player1').toJSON());
         balls.push(createOne('player1').toJSON());
+        service.all();
         return balls;
     },
     byId : function(player, id) {
