@@ -3,7 +3,7 @@
  */
 var model = require('nodejs-model');
 
-var Team = model("Team")
+module.exports = model("Team")
         .attr('id',{
 
         })

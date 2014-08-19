@@ -3,7 +3,7 @@
  */
 var model = require('nodejs-model');
 
-var Player = model("Player")
+module.exports = model("Player")
         .attr('id',{
             validations: {
                 format: {

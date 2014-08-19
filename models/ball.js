@@ -3,7 +3,7 @@
  */
 var model = require('nodejs-model');
 
-var Ball = model("Ball")
+module.exports = model("Ball")
         .attr('id',{
 
         })
@@ -24,13 +24,13 @@ var Ball = model("Ball")
             }
         })
         .attr('players',{
-            validations: {
-                format: {
-                    with: /^({\[)?("[a-z0-9_-]{3,16}",*)*(\]})?$/,
-                    allowBlank: true,
-                    message: 'only user id array is allowed, or empty string.'
-                }
-            }
+//            validations: {
+//                format: {
+//                    with: /^(\[)?("[a-z0-9_-]{3,16}",*)*(\])?$/,
+//                    allowBlank: true,
+//                    message: 'only user id array is allowed, or empty string.'
+//                }
+//            }
         })
         .attr('href', {
             validations: {
@@ -44,7 +44,7 @@ var Ball = model("Ball")
         .attr('data', {
             validations: {
                 length: {
-                    minimum: 100,
+                    minimum: 10, //100
                     messages: {
                         tooShort: 'Ball\'s data is short or empty'
                     }
@@ -54,32 +54,3 @@ var Ball = model("Ball")
             tags: ['transit']
         })
     ;
-
-module.exports = Ball;
-
-//
-//var u1 = User.create();
-////getters are generated automatically
-//u1.name('foo');
-//u1.password('password');
-//
-//console.log(u1.name());
-////prints _foo_
-//
-////Invoke validations and wait for the validations to fulfill
-//u1.validate(function() {
-//    if u1.isValid {
-//        //validated, perform business logic
-//    } else {
-//        //validation failed, dump validation errors to the console
-//        console.log(p1.errors)
-//    }
-//});
-//
-////get object as a plain object, ready for JSON
-//console.log(u1.toJSON());
-////produces: { name: 'foo' }
-//
-////now also with attributes that were tagged with 'private'
-//console.log(u1.toJSON('private'));
-////produces: { name: 'foo' } { password: 'password' }
