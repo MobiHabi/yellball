@@ -2,8 +2,9 @@
  * Created by max on 8/5/14.
  */
 var model = require('nodejs-model');
+var uuid = require('node-uuid');
 
-module.exports = model("Ball")
+var Ball = module.exports = model("Ball")
         .attr('id',{
 
         })
@@ -54,3 +55,25 @@ module.exports = model("Ball")
             tags: ['transit']
         })
     ;
+
+Ball.createOne = function(player) {
+    var _ball = Ball.create();
+    _ball.id(uuid.v4());
+    _ball.creationDate(new Date());
+    _ball.shooter(player);
+    _ball.players();
+    _ball.href('http://ya.ru');
+    _ball.data('some-byte-array');
+    return _ball;
+};
+
+Ball.createFrom = function(player, ball) {
+    var _ball = Ball.create();
+    _ball.id(uuid.v4());
+    _ball.creationDate(ball.creation_date);
+    _ball.shooter(player);
+    _ball.players(ball.players);
+    _ball.href(ball.href);
+    _ball.data(ball.data);
+    return _ball;
+};

@@ -19,7 +19,7 @@ module.exports = {
         router.route('/ball')
             .get(function (req, res) {
                 var response = ball.all(PLAYER);
-                res.send(response);
+                res.send(response.entity, response.status || 200);
             })
             .post(function (req, res) {
                 var response = ball.create(PLAYER, req.body);
@@ -28,15 +28,15 @@ module.exports = {
         router.route('/ball/:id')
             .get(function (req, res) {
                 var response = ball.byId(PLAYER, req.params.id);
-                res.send(response);
+                res.send(response.entity, response.status || 200);
             })
             .put(function (req, res) {
                 var response = ball.update(PLAYER, req.params.id, req.body);
-                res.send(response);
+                res.send(response.entity, response.status || 200);
             })
             .delete(function (req, res) {
                 var response = ball.delete(PLAYER, req.params.id);
-                res.send(response);
+                res.send(response.entity, response.status || 200);
             });
     },
     info : function() {
