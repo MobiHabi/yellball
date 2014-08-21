@@ -32,7 +32,9 @@ module.exports = {
     },
     get : function(player, id) {
         var _ball = retrieveOne(player, id)
-        storage.push(player, _ball.data()); // TODO test only
+//        storage.push(player, _ball.data()); // TODO test only
+//        db.save(id);
+        storage.fetch(player, id);
         return _ball;
     },
     create : function(player, ball) {
